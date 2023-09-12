@@ -8,8 +8,7 @@ module.exports = {
     database: process.env.DB_NAME,
     host: process.env.DB_HOST,
     dialect: 'mysql',
-    port: 3006,
-    operatorsAliases: false
+    port: 3006
   },
   production: {
     use_env_variable: 'JAWSDB_URL',
