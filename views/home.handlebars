@@ -1,0 +1,17 @@
+<section>
+    <h2>Latest Posts</h2>
+    {{#each posts as |post|}}
+    <!-- Sample blog post placeholders -->
+    <article>
+        <h3>{{post.title}}</h3>
+        <p>{{post.content}}</p>
+        <a href="/blog/1">Read More</a>
+    </article>
+    {{/each}}
+    <article>
+        <h3>Blog Title 2</h3>
+        <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Odit, laboriosam!</p>
+        <a href="/blog/2">Read More</a>
+    </article>
+</section>
+

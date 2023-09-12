@@ -1,0 +1,124 @@
+/* Base Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+button {
+    cursor: pointer;
+    border: none;
+    border-radius: 5px;
+    transition: background-color 0.3s ease;
+}
+
+/* Header Styles */
+header, footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+}
+
+nav {
+    display: flex;
+    gap: 1rem;
+    padding-top: 1rem;
+}
+
+nav a {
+    color: #fff;
+    padding: 0.5rem 1rem;
+    background-color: #555;
+    border-radius: 5px;
+}
+
+nav a:hover {
+    background-color: #777;
+}
+
+/* Main Content Styles */
+main {
+    max-width: 600px;
+    margin: 2rem auto;
+    padding: 1rem;
+    background-color: #fff;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+article {
+    border-bottom: 1px solid #eee;
+    padding: 1rem 0;
+}
+
+article:last-child {
+    border-bottom: none;
+}
+
+h2 {
+    margin: 0;
+}
+
+/* Form Styles */
+.form-group, .login-container {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: bold;
+}
+
+input {
+    padding: 0.5rem;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.signup-section {
+    max-width: 400px;
+    margin: 2rem auto;
+    background-color: #f7f7f7;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+/* Button Styles */
+button {
+    padding: 0.5rem 1rem;
+    background-color: #007BFF;
+    color: #fff;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+/* Footer Styles */
+footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
