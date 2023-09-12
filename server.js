@@ -9,7 +9,7 @@ const routes = require('./routes/index');
 
 require('dotenv').config();
 
-const { sequelize } = require('./models/index');
+const sequelize = require('./config/config');
 const SequelizeStore = require('connect-session-sequelize')(session.Store);
 
 // Set up Express app
@@ -22,7 +22,7 @@ const hbs = exphbs.create({ defaultLayout: 'main' });
 // Session
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  cookie: { /*secure: true*/ },
+  cookie: { secure: true },
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore( {

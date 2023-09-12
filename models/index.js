@@ -1,30 +1,7 @@
 'use strict'
-const { Sequelize } = require('sequelize');
-const env = process.env.NODE_ENV || 'development';
-const config = require(__dirname + '/../config/config.js')[env];
-console.log(config);
-
 const { User } = require('./user');
 const { Post } = require('./post');
 const { Comment } = require('./comment');
-
-
-let sequelize;
-
-
-if (config.use_env_variable) {
-  sequelize = new Sequelize(process.env[config.use_env_variable]);
-} else {
-  sequelize = new Sequelize(
-    config.database,
-    config.username,
-    config.password,
-    {
-      ...config,
-      define: {}  // Explicitly providing an empty definition configuration
-    }
-  );
-}
 
 
 User.hasMany(Post, {
@@ -58,4 +35,4 @@ Comment.belongsTo(Post, {
 });
 
 
-module.exports = { sequelize, Post, Comment, User };
+module.exports = { Post, Comment, User };
