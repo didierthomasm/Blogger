@@ -22,7 +22,12 @@ const hbs = exphbs.create({ defaultLayout: 'main' });
 // Session
 app.use(session({
   secret: process.env.SESSION_SECRET,
-  cookie: { secure: true },
+  cookie: {
+    maxAge: 300000,
+    httpOnly: true,
+    secure: false,
+    sameSite: 'strict',
+  } /*{ secure: true }*/,
   resave: false,
   saveUninitialized: true,
   store: new SequelizeStore( {

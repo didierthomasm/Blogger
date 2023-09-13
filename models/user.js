@@ -1,3 +1,4 @@
+'use strict'
 const { Model, DataTypes } = require('sequelize');
 const sequelize = require('../config/config');
 const bcrypt = require('bcrypt');
@@ -22,6 +23,11 @@ User.init({
   last_name: {
     type: DataTypes.STRING,
     allowNull: false
+  },
+  nickname: {
+    type: DataTypes.STRING,
+    allowNull: false,
+    unique: true
   },
   email: {
     type: DataTypes.STRING,

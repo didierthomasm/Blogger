@@ -1,121 +1,162 @@
-/* Base Styles */
-body {
-    font-family: Arial, sans-serif;
-    background-color: #f4f4f4;
+/* Reset some default browser styles */
+* {
     margin: 0;
     padding: 0;
+    box-sizing: border-box;
 }
 
-a {
-    text-decoration: none;
+body {
+    font-family: 'Nunito', Arial, sans-serif; /* Added a new font for variety */
+    background-color: #f7fafc;
+    color: #2d3748; /* Dark gray for general text */
+    line-height: 1.6;
 }
 
-a:hover {
-    text-decoration: underline;
-}
-
-button {
-    cursor: pointer;
-    border: none;
-    border-radius: 5px;
-    transition: background-color 0.3s ease;
-}
-
-/* Header Styles */
-header, footer {
-    background-color: #333;
-    color: #fff;
+header {
+    background-color: #2d3748; /* Darker background for header */
+    color: #edf2f7; /* Light text for contrast */
     text-align: center;
     padding: 1rem 0;
 }
 
 nav {
     display: flex;
+    justify-content: center; /* Centered navigation links */
     gap: 1rem;
     padding-top: 1rem;
 }
 
 nav a {
-    color: #fff;
+    color: #edf2f7;
+    text-decoration: none;
     padding: 0.5rem 1rem;
-    background-color: #555;
+    background-color: #4a5568; /* Slightly lighter than header bg */
     border-radius: 5px;
+    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform for a slight scale */
 }
 
-nav a:hover {
-    background-color: #777;
+nav a:hover, nav a:focus {
+    background-color: #5a67d8; /* Blue for hover state */
+    transform: scale(1.05); /* Slight growth effect for hover */
 }
 
-/* Main Content Styles */
 main {
-    max-width: 600px;
-    margin: 2rem auto;
-    padding: 1rem;
+    max-width: 800px; /* A bit more space */
+    margin: 3rem auto; /* More vertical space */
+    padding: 2rem;
     background-color: #fff;
-    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Slightly more prominent shadow */
 }
 
-article {
-    border-bottom: 1px solid #eee;
-    padding: 1rem 0;
+.login-container, .signup-section {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem; /* Increased gap for better spacing */
+    max-width: 400px; /* Limit width for forms */
+    margin: 0 auto; /* Center forms */
 }
 
-article:last-child {
+/* Specific styling for the profile page */
+
+.profile-section {
+    padding: 20px;
+    border-radius: 5px;
+    background-color: #fff;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    margin-bottom: 20px;
+}
+
+.profile-section p {
+    font-size: 18px;
+    margin-bottom: 10px;
+}
+
+.profile-section h2 {
+    font-size: 24px;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.edit-profile-btn {
+    background-color: #2d3748;
+    color: #edf2f7;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.edit-profile-btn:hover {
+    background-color: #4a5568;
+}
+
+.user-posts h2 {
+    font-size: 24px;
+    margin-top: 0;
+}
+
+.user-posts article {
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.user-posts article:last-child {
     border-bottom: none;
 }
 
-h2 {
-    margin: 0;
-}
-
-/* Form Styles */
-.form-group, .login-container {
-    margin-bottom: 1rem;
-}
-
 label {
-    display: block;
-    margin-bottom: 0.5rem;
     font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
-input {
-    padding: 0.5rem;
-    font-size: 1rem;
-    border: 1px solid #ccc;
+input[type="text"], input[type="email"], input[type="password"], button {
+    width: 100%; /* Make all of them full width */
+    padding: 0.75rem 1rem;
+    border: 1px solid #e2e8f0; /* Lighter border color */
     border-radius: 5px;
+    transition: border-color 0.3s ease; /* Transition for focus state */
 }
 
-input[type="text"],
-input[type="email"],
-input[type="password"] {
-    width: 100%;
-    box-sizing: border-box;
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
+    border-color: #5a67d8; /* Blue for focus state */
 }
 
-.signup-section {
-    max-width: 400px;
-    margin: 2rem auto;
-    background-color: #f7f7f7;
-    padding: 1rem;
-    border-radius: 5px;
-}
-
-/* Button Styles */
 button {
-    padding: 0.5rem 1rem;
-    background-color: #007BFF;
+    cursor: pointer;
+    background-color: #5a67d8; /* Blue for primary action */
     color: #fff;
+    margin-top: 1rem; /* Space out the button from inputs */
 }
 
 button:hover {
-    background-color: #0056b3;
+    background-color: #434190; /* Darken the blue for hover */
 }
 
-/* Footer Styles */
+/*.show-password {
+    position: relative;  !* Relative position so that we can place our eye icon inside it *!
+}
+
+.show-password .toggle-password {
+    position: absolute;  !* Absolute positioning to place the eye icon on top of the input field *!
+    top: 50%;           !* Center it vertically *!
+    right: -150px;        !* Keep it 10px from the right *!
+    transform: translateY(-50%); !* Vertically center the icon *!
+    cursor: pointer;    !* Make it look clickable *!
+    border: none;       !* Remove any default borders *!
+    background: none;   !* Remove any default backgrounds *!
+    font-size: 16px;    !* Adjust this as needed *!
+}
+
+.show-password input[type="password"] {
+    padding-right: 30px;  !* Make space for the eye icon *!
+}*/
+
 footer {
-    background-color: #333;
-    color: #fff;
+    background-color: #2d3748;
+    color: #edf2f7;
     text-align: center;
     padding: 1rem 0;
     position: absolute;
