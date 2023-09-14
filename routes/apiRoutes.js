@@ -1,7 +1,8 @@
 'use strict'
 const router = require('express').Router();
 const userController = require('../controllers/userController');
-const {User} = require("../models");
+const blogController = require('../controllers/blogController');
+const {User, Post} = require("../models");
 
 // Get all users
 router.get('/user', userController.getAllUsers);
@@ -11,6 +12,9 @@ router.get('/user/:id', userController.getUserById);
 
 // Get user by email
 router.get('/user', userController.getUserByEmail);
+
+// Get all posts
+router.get('/post', blogController.getAllPosts);
 
 // Create new user
 router.post('/user/signup', async (req, res) => {
@@ -37,7 +41,6 @@ router.post('/user/signup', async (req, res) => {
 
 router.post('/user/login', async (req, res) => {
   try {
-    console.log('route');
     const userData = await User.findOne( { where: { email: req.body.email }});
     const validPassword = await userData.checkPassword(req.body.password);
     if (!userData || !validPassword) {
