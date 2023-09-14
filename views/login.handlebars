@@ -1,13 +1,60 @@
-<div class="login-container">
-    <form action="/login" method="post">
-        <label for="email-login">Email:</label>
-        <input type="email" id="email-login" name="email" required>
+<div class="container">
+    <!-- Login Section -->
+    <section class="login-section">
+        <h2>Login</h2>
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="email-login">Email:</label>
+                <input type="email" id="email-login" name="email" required>
+            </div>
 
-        <label for="password-login">Password:</label>
-        <input type="password" id="password-login" name="password" required>
+            <div class="form-group">
+                <label for="password-login">Password:</label>
+                <input type="password" id="password-login" name="password" required>
+            </div>
 
-        <button type="submit">Login</button>
-    </form>
+            <div class="form-group">
+                <button type="submit">Login</button>
+            </div>
+        </form>
+    </section>
+    <!-- Signup Section -->
+    <section class="signup-section">
+        <h2>Sign Up</h2>
+        <form action="/register" method="POST">
+            <div class="form-group">
+                <label for="firstName">First Name</label>
+                <input type="text" id="firstName" name="firstName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="lastName">Last Name</label>
+                <input type="text" id="lastName" name="lastName" required>
+            </div>
+
+            <div class="form-group">
+                <label for="nickname">Nickname</label>
+                <input type="text" id="nickname" name="nickname" required>
+            </div>
+
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required>
+            </div>
+
+            <div class="form-group">
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" required>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Register</button>
+            </div>
+        </form>
+    </section>
 </div>
 
 <script src="/js/logIn.js"></script>
+
+<!-- Add some CSS for layout and styles -->
+

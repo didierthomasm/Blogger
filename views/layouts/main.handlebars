@@ -14,9 +14,10 @@
         {{#if logged_in}}
         <a href="/">Home</a>
         <a href="/profile">Profile</a>
-        <button class="no-button" id="logout">logout</button>
+        <a href="" id="logout">Logout</a>
         {{else}}
         <a href="/">Home</a>
+        <a href="/profile">Profile</a>
         <a href="/login">Login</a>
         {{/if}}
     </nav>
@@ -29,6 +30,10 @@
 <footer>
     <p>&copy; 2023 My Blog. All rights reserved.</p>
 </footer>
+{{#if logged_in}}
+<script src="/js/logOut.js"></script>
+{{else}}
 <script src="/js/scripts.js"></script>
+{{/if}}
 </body>
 </html>
