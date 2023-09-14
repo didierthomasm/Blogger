@@ -1,23 +1,7 @@
-'use strict'
 const router = require('express').Router();
-const userController = require('../controllers/userController');
-const blogController = require('../controllers/blogController');
-const {User, Post} = require("../models");
+const { User } = require('../../models');
 
-// Get all users
-router.get('/user', userController.getAllUsers);
-
-// Get a user by id
-router.get('/user/:id', userController.getUserById);
-
-// Get user by email
-router.get('/user', userController.getUserByEmail);
-
-// Get all posts
-router.get('/post', blogController.getAllPosts);
-
-// Create new user
-router.post('/user/signup', async (req, res) => {
+router.post('/signup', async (req, res) => {
   try {
     const newUser = await User.create({
       first_name: req.body.firstName,
@@ -39,18 +23,20 @@ router.post('/user/signup', async (req, res) => {
   }
 });
 
-router.post('/user/login', async (req, res) => {
+router.post('/login', async (req, res) => {
   try {
-    const userData = await User.findOne( { where: { email: req.body.email }});
+    const userData = await User.findOne({ where: { email: req.body.email } });
     const validPassword = await userData.checkPassword(req.body.password);
+
     if (!userData || !validPassword) {
       res
         .status(400)
         .json( { message: 'Incorrect email or password! '});
-        return;
+      return;
     }
 
     req.session.save(() => {
+      // console.log(userData);
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
