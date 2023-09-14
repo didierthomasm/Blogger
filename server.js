@@ -5,7 +5,7 @@ const express = require('express');
 const session = require('express-session');
 const exphbs = require('express-handlebars');
 const morgan = require('morgan');
-const routes = require('./routes/index');
+const routes = require('./controllers');
 
 require('dotenv').config();
 
