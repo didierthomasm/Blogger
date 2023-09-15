@@ -6,6 +6,7 @@ const session = require('express-session');
 const exphbs = require('express-handlebars');
 const morgan = require('morgan');
 const routes = require('./controllers');
+const helpers = require('./utils/helpers');
 
 require('dotenv').config();
 
@@ -16,7 +17,7 @@ const SequelizeStore = require('connect-session-sequelize')(session.Store);
 const app = express();
 const PORT = process.env.PORT || 3001;
 
-const hbs = exphbs.create({ defaultLayout: 'main' });
+const hbs = exphbs.create({ helpers });
 
 
 // Session

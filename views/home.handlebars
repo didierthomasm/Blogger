@@ -3,9 +3,8 @@
     {{#each posts as |post|}}
         <article>
             <h3>{{post.title}}</h3>
-            <p>{{post.content}}</p>
-            <p>User: {{user.nickname}}</p>
-            <a href="/blog/{{post.id}}">Read More</a>
+            <p>{{dateFormat post.createdAt}}</p>
+            <a href="/post/{{post.id}}">Read More</a>
         </article>
     {{/each}}
 </section>

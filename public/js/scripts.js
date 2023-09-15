@@ -1,18 +1,26 @@
-/*
-// Password toggle
-document.addEventListener('DOMContentLoaded', function() {
-  const passwordInput = document.querySelector('input[type="password"]');
-  const togglePasswordButton = document.createElement('button');
-  togglePasswordButton.innerHTML = '👁️'; // Eye emoji, but you can replace it with an icon
-  togglePasswordButton.classList.add('toggle-password');
+const createPost = async (event) => {
+  event.preventDefault();
 
-  const container = passwordInput.parentNode;
-  container.classList.add('show-password');
-  container.appendChild(togglePasswordButton);
+  const title = document.querySelector('#title-create-post').value.trim();
+  const description = document.querySelector('#description-create-post').value.trim();
+  const content = document.querySelector('#content-create-post').value.trim();
 
-  togglePasswordButton.addEventListener('click', function() {
-    const type = passwordInput.getAttribute('type') === 'password' ? 'text' : 'password';
-    passwordInput.setAttribute('type', type); // Toggle between password visibility
-  });
-});
-*/
+  if (title && description && content) {
+    const response = await fetch('/api/posts/', {
+      method: 'POST',
+      body: JSON.stringify( { title, description, content } ),
+      headers: { 'Content-Type': 'application/json' },
+    });
+
+    if (response.ok) {
+      document.location.replace('/profile');
+    } else {
+      alert(response.statusText);
+    }
+  }
+};
+
+document
+  .querySelector('.create-post')
+  .addEventListener('submit', createPost);
+

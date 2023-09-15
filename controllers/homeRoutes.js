@@ -1,10 +1,11 @@
 const router = require('express').Router();
 const { Post, User } = require('../models');
 const withAuth = require('../utils/auth');
+const transformDate = require('../utils/transformDate');
 
 router.get('/', async (req, res) => {
   try {
-    // Get all post and JOIN with user data
+    // Get all posts and JOIN with user data
     const postData = await Post.findAll({
       include: [
         {
@@ -16,7 +17,8 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
-
+    const date = posts[0].createdAt;
+    console.log(transformDate(date)) ;
     // Pass serialized data and session flag into template
     res.render('home', {
       posts,

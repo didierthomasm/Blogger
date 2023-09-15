@@ -5,9 +5,35 @@
     <p><strong>Nickname:</strong> {{this.nickname}}</p>
     <p><strong>Email:</strong> {{this.email}}</p>
 
-
     <!--<button><a href="/edit-profile">Edit Profile</a></button>-->
 </section>
+
+<div class="container">
+    <section class="create-post">
+        <h2>Create a post</h2>
+        <form action="/create-post" method="post">
+            <div class="form-group">
+                <label for="title-create-post">Title:</label>
+                <input type="text" id="title-create-post" name="title-create-post" required>
+            </div>
+
+            <div class="form-group">
+                <label for="description-create-post">Description:</label>
+                <input type="text" id="description-create-post" name="description-create-post">
+            </div>
+
+            <div class="form-group">
+                <label for="content-create-post">Content:</label>
+                <textarea id="content-create-post" name="content-create-post"></textarea>
+            </div>
+
+            <div class="form-group">
+                <button type="submit">Create</button>
+            </div>
+
+        </form>
+    </section>
+</div>
 
 <section class="user-posts">
     <h2>Your Posts</h2>
@@ -17,6 +43,10 @@
             <p>{{post.content}}</p>
             <!-- Linking to each post for more details or editing -->
             <a href="/post/{{post.id}}">Read More</a>
+            <!-- Delete button for each post -->
+            <form action="/post/{{post.id}}/delete" method="POST" style="display:inline;">
+                <button type="submit" class="delete-btn">Delete</button>
+            </form>
         </article>
     {{/each}}
 </section>
