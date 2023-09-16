@@ -2,6 +2,41 @@
     <h3>{{this.title}}</h3>
         <article>
             <p>{{this.content}}</p>
-            <p>User: {{user.nickname}}</p>
+            <p>Post user: {{user.nickname}}</p>
+            <p>Created: {{dateFormat this.createdAt}}</p>
         </article>
 </section>
+
+{{#if comments.length}}
+<section>
+    <h3>Comments</h3>
+    {{#each comments}}
+        <p>{{this.content}}</p>
+        <p>Comment user: {{this.user.nickname}}</p>
+        <p>Created: {{dateFormat this.created_at}}</p>
+        <button data-id="{{post.id}}" class="delete-btn">Delete</button>
+    {{/each}}
+</section>
+{{/if}}
+
+{{#if logged_in}}
+    <div class="container">
+        <section class="create-comment" data-post-id="{{this.id}}">
+            <h2>Add a comment</h2>
+            <form method="post" action="#">
+
+                <div class="form-group">
+                    <label for="content-comment"></label>
+                    <textarea id="content-comment" name="content-comment"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <button type="submit">Submit</button>
+                </div>
+
+            </form>
+        </section>
+    </div>
+{{/if}}
+
+<script src="/js/comments.js"></script>

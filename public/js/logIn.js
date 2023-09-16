@@ -30,11 +30,17 @@ const singUpFormHandler = async (event)=> {
   const nickname = document.querySelector('#nickname').value.trim();
   const email = document.querySelector('#email').value.trim();
   const password = document.querySelector('#password').value.trim();
+  const confirmPassword = document.querySelector('#confirm-password').value.trim();
 
-  if (firstName && lastName && nickname && email && password) {
-    const response = await fetch('/api/user/signup', {
+  if (password !== confirmPassword) {
+    alert('Password do not match');
+    return false;
+  }
+
+  if (firstName && lastName && nickname && email && password && confirmPassword) {
+    const response = await fetch('/api/users/signup', {
       method:'POST',
-      body:JSON.stringify( { firstName, lastName , nickname, email, password } ),
+      body:JSON.stringify( { firstName, lastName , nickname, email, password, confirmPassword } ),
       headers: { 'Content-Type': 'application/json' },
     });
 

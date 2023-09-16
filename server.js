@@ -24,9 +24,7 @@ const hbs = exphbs.create({ helpers });
 app.use(session({
   secret: process.env.SESSION_SECRET,
   cookie: {
-    maxAge: 300000,
-    httpOnly: true,
-    secure: false,
+    expires: new Date(Date.now() + 7 * 24 * 60 * 60 * 1000),
     sameSite: 'strict',
   } /*{ secure: true }*/,
   resave: false,

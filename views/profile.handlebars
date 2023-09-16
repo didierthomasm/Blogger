@@ -44,9 +44,9 @@
             <!-- Linking to each post for more details or editing -->
             <a href="/post/{{post.id}}">Read More</a>
             <!-- Delete button for each post -->
-            <form action="/post/{{post.id}}/delete" method="POST" style="display:inline;">
-                <button type="submit" class="delete-btn">Delete</button>
-            </form>
+            <button data-id="{{post.id}}" class="delete-btn">Delete</button>
         </article>
     {{/each}}
 </section>
+
+<script src="/js/posts.js"></script>

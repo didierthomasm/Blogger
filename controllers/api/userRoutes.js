@@ -3,6 +3,12 @@ const { User } = require('../../models');
 
 router.post('/signup', async (req, res) => {
   try {
+    const { password, confirmPassword } = req.body;
+
+    if (password !== confirmPassword) {
+      return res.status(400).send('Passwords do not match');
+    }
+
     const newUser = await User.create({
       first_name: req.body.firstName,
       last_name: req.body.lastName,
@@ -36,7 +42,6 @@ router.post('/login', async (req, res) => {
     }
 
     req.session.save(() => {
-      // console.log(userData);
       req.session.user_id = userData.id;
       req.session.logged_in = true;
 
