@@ -1,6 +1,15 @@
 const router = require('express').Router();
 const { User } = require('../../models');
 
+router.get('/user-logged', async (req, res) => {
+  try {
+    return req.session.user_id;
+  } catch (err) {
+    console.error(err);
+    res.status(400).json(err);
+  }
+});
+
 router.post('/signup', async (req, res) => {
   try {
     const { password, confirmPassword } = req.body;
@@ -28,6 +37,7 @@ router.post('/signup', async (req, res) => {
     res.status(500).send('Error registering user.')
   }
 });
+
 
 router.post('/login', async (req, res) => {
   try {

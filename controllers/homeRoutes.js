@@ -39,20 +39,23 @@ router.get('/post/:id', async (req, res) => {
         },
         {
           model: Comment,
-          attributes: ['content', 'created_at'],
+          attributes: ['content', 'created_at', 'id'],
           include: [{
             model: User,
-            attributes: ['nickname'],
+            attributes: ['nickname', 'id'],
           }]
         },
       ],
     });
 
     const post = postData.get({ plain: true });
+    const postOwnerId = post['user_id'];
 
     res.render('post', {
       ...post,
-      logged_in: req.session.logged_in
+      logged_in: req.session.logged_in,
+      loggedInUserId: req.session.user_id,
+      postOwnerId: postOwnerId
     });
   } catch (err) {
     res.status(500).json(err);
