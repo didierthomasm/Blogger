@@ -6,22 +6,24 @@
 }
 
 body {
-    font-family: 'Nunito', Arial, sans-serif; /* Added a new font for variety */
+    font-family: 'Nunito', Arial, sans-serif;
     background-color: #f7fafc;
-    color: #2d3748; /* Dark gray for general text */
+    color: #2d3748;
     line-height: 1.6;
 }
 
 header {
-    background-color: #2d3748; /* Darker background for header */
-    color: #edf2f7; /* Light text for contrast */
+    background-color: #2d3748;
+    color: #edf2f7;
     text-align: center;
     padding: 1rem 0;
+    position: sticky;
+    top: 0;
 }
 
 nav {
     display: flex;
-    justify-content: center; /* Centered navigation links */
+    justify-content: center;
     gap: 1rem;
     padding-top: 1rem;
 }
@@ -30,24 +32,23 @@ nav a {
     color: #edf2f7;
     text-decoration: none;
     padding: 0.5rem 1rem;
-    background-color: #4a5568; /* Slightly lighter than header bg */
+    background-color: #4a5568;
     border-radius: 5px;
-    transition: background-color 0.3s ease, transform 0.3s ease; /* Added transform for a slight scale */
+    transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
 nav a:hover, nav a:focus {
-    background-color: #5a67d8; /* Blue for hover state */
-    transform: scale(1.05); /* Slight growth effect for hover */
+    background-color: #5a67d8;
+    transform: scale(1.05);
 }
 
 main {
-    max-width: 800px; /* A bit more space */
-    margin: 3rem auto; /* More vertical space */
+    max-width: 800px;
+    margin: 3rem auto;
     padding: 2rem;
     background-color: #fff;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.1); /* Slightly more prominent shadow */
+    box-shadow: 0 4px 6px rgba(0,0,0,0.1);
 }
-
 
 .container {
     display: flex;
@@ -55,27 +56,12 @@ main {
     gap: 2rem;
 }
 
-.signup-section, .login-section {
-    flex: 1;
-    padding: 2rem;
-    border: 1px solid #ccc;
-    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Specific styling for the profile page */
-
-.profile-section {
+.signup-section, .login-section, .profile-section {
     padding: 20px;
     border-radius: 5px;
     background-color: #fff;
     box-shadow: 0 4px 6px rgba(0,0,0,0.1);
     margin-bottom: 20px;
-}
-
-.profile-section p {
-    font-size: 18px;
-    margin-bottom: 10px;
 }
 
 .profile-section h2 {
@@ -85,65 +71,48 @@ main {
     margin-bottom: 20px;
 }
 
-.edit-profile-btn {
-    background-color: #2d3748;
-    color: #edf2f7;
-    padding: 10px 15px;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.edit-profile-btn:hover {
-    background-color: #4a5568;
-}
-
 .user-posts h2 {
     font-size: 24px;
     margin-top: 0;
 }
 
-.user-posts article {
-    margin-bottom: 20px;
-    padding-bottom: 15px;
+.user-posts article:not(:last-child) {
     border-bottom: 1px solid #e2e8f0;
-}
-
-.user-posts article:last-child {
-    border-bottom: none;
+    padding-bottom: 15px;
+    margin-bottom: 20px;
 }
 
 label {
     font-weight: bold;
     margin-bottom: 0.5rem;
+    display: block;
 }
 
-input[type="text"], input[type="email"], input[type="password"], button {
-    width: 100%; /* Make all of them full width */
+input[type="text"], input[type="email"], input[type="password"], button, textarea {
+    width: 100%;
     padding: 0.75rem 1rem;
-    border: 1px solid #e2e8f0; /* Lighter border color */
+    border: 1px solid #e2e8f0;
     border-radius: 5px;
-    transition: border-color 0.3s ease; /* Transition for focus state */
+    transition: border-color 0.3s ease;
 }
 
-input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus {
-    border-color: #5a67d8; /* Blue for focus state */
+input[type="text"]:focus, input[type="email"]:focus, input[type="password"]:focus, textarea:focus {
+    border-color: #5a67d8;
+    outline: none;
 }
 
 button {
     cursor: pointer;
-    background-color: #5a67d8; /* Blue for primary action */
+    background-color: #5a67d8;
     color: #fff;
-    margin-top: 1rem; /* Space out the button from inputs */
+    margin-top: 1rem;
 }
 
 button:hover {
-    background-color: #434190; /* Darken the blue for hover */
+    background-color: #434190;
 }
 
-/* Create a post section */
-.create-post {
+.create-post, .create-comment {
     padding: 20px;
     background-color: #fff;
     border-radius: 5px;
@@ -151,62 +120,37 @@ button:hover {
     margin-bottom: 20px;
 }
 
-/* Style the textarea for the post content */
-textarea {
-    width: 100%;
-    padding: 0.75rem 1rem;
-    border: 1px solid #e2e8f0;
+.comment-container {
+    background-color: #f7fafc;
+    padding: 15px;
+    margin-bottom: 15px;
     border-radius: 5px;
-    transition: border-color 0.3s ease;
-    min-height: 150px; /* Set a minimum height for the textarea */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
 
-textarea:focus {
-    border-color: #5a67d8; /* Blue for focus state */
+textarea {
+    min-height: 150px;
 }
 
-/* Style for the delete button */
 .delete-btn {
-    background-color: #e53e3e; /* Red for delete action */
+    background-color: #e53e3e;
     color: #fff;
     border: none;
     border-radius: 5px;
     padding: 5px 10px;
     cursor: pointer;
     transition: background-color 0.3s ease;
-    margin-left: 1rem; /* Space between the read more and delete buttons */
+    margin-left: 1rem;
 }
 
 .delete-btn:hover {
-    background-color: #c53030; /* Darken the red for hover */
+    background-color: #c53030;
 }
-
-
-/*.show-password {
-    position: relative;  !* Relative position so that we can place our eye icon inside it *!
-}
-
-.show-password .toggle-password {
-    position: absolute;  !* Absolute positioning to place the eye icon on top of the input field *!
-    top: 50%;           !* Center it vertically *!
-    right: -150px;        !* Keep it 10px from the right *!
-    transform: translateY(-50%); !* Vertically center the icon *!
-    cursor: pointer;    !* Make it look clickable *!
-    border: none;       !* Remove any default borders *!
-    background: none;   !* Remove any default backgrounds *!
-    font-size: 16px;    !* Adjust this as needed *!
-}
-
-.show-password input[type="password"] {
-    padding-right: 30px;  !* Make space for the eye icon *!
-}*/
 
 footer {
     background-color: #2d3748;
     color: #edf2f7;
     text-align: center;
     padding: 1rem 0;
-    /*position: absolute;*/
-    bottom: 0;
     width: 100%;
 }

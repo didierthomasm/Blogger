@@ -8,4 +8,17 @@ module.exports = {
     // Create the formatted date string
     return `${day}-${month}-${year}`;
   },
+  isOwner: async (id) => {
+    const owner = id;
+    const loggedIn = await fetch('/api/users/user-logged' , {
+      method: 'GET'
+    });
+    return owner === loggedIn;
+  },
+  isEqual: (commentOwnerId, userLoggedInId, postOwnerId, commentId, options) => {
+    if (commentOwnerId === userLoggedInId || postOwnerId === userLoggedInId) {
+      return options.fn({id: commentId});
+    }
+    return options.inverse(this);
+  },
 }

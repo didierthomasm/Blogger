@@ -44,6 +44,7 @@
             <!-- Linking to each post for more details or editing -->
             <a href="/post/{{post.id}}">Read More</a>
             <!-- Delete button for each post -->
+            <button data-ida="{{post.id}}" class="update-comment">Update</button>
             <button data-id="{{post.id}}" class="delete-btn">Delete</button>
         </article>
     {{/each}}
