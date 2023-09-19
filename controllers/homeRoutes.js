@@ -17,10 +17,10 @@ router.get('/', async (req, res) => {
 
     // Serialize data so the template can read it
     const posts = postData.map((post) => post.get({ plain: true }));
-    if (posts.length > 0) {
-      const date = posts[0].createdAt;
-      console.log(transformDate(date));
-    }
+    // if (posts.length > 0) {
+      const date = posts[0]?.createdAt;
+    //   console.log(transformDate(date));
+    // }
     // Pass serialized data and session flag into template
     res.render('home', {
       posts,
