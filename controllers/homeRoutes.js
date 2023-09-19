@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 const transformDate = require('../utils/transformDate');
 
 router.get('/', async (req, res) => {
-
+  try {
     // Get all posts and JOIN with user data
     const postData = await Post.findAll({
       include: [
@@ -24,7 +24,9 @@ router.get('/', async (req, res) => {
       posts,
       logged_in: req.session.logged_in
     });
-
+  } catch (err) {
+    res.render('home');
+  }
 });
 
 router.get('/post/:id', async (req, res) => {
