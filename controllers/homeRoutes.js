@@ -4,7 +4,7 @@ const withAuth = require('../utils/auth');
 const transformDate = require('../utils/transformDate');
 
 router.get('/', async (req, res) => {
-  try {
+
     // Get all posts and JOIN with user data
     const postData = await Post.findAll({
       include: [
@@ -20,18 +20,11 @@ router.get('/', async (req, res) => {
     const date = posts[0].createdAt;
     console.log(transformDate(date)) ;
     // Pass serialized data and session flag into template
-    if ( posts ) {
-      res.render('home', {
-        posts,
-        logged_in: req.session.logged_in
-      });
-    } else {
-      res.render('home');
-    }
+    res.render('home', {
+      posts,
+      logged_in: req.session.logged_in
+    });
 
-  } catch (err) {
-    res.status(500).json(err);
-  }
 });
 
 router.get('/post/:id', async (req, res) => {
