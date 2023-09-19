@@ -6,7 +6,7 @@ const transformDate = require('../utils/transformDate');
 router.get('/', async (req, res) => {
   try {
     // Get all posts and JOIN with user data
-    const postData = await Post.findAll({
+    const postData = await Post?.findAll({
       include: [
         {
           model: User,
@@ -26,6 +26,7 @@ router.get('/', async (req, res) => {
     });
   } catch (err) {
     res.render('home');
+    res.status(500).json(err);
   }
 });
 
