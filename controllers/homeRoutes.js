@@ -20,12 +20,17 @@ router.get('/', async (req, res) => {
     const date = posts[0].createdAt;
     console.log(transformDate(date)) ;
     // Pass serialized data and session flag into template
-    res.render('home', {
-      posts,
-      logged_in: req.session.logged_in
-    });
-  } catch (err) {
+    if ( posts ) {
+      res.render('home', {
+        posts,
+        logged_in: req.session.logged_in
+      });
+    } else {
+      res.render('home');
+    }
 
+  } catch (err) {
+    res.status(500).json(err);
   }
 });
 
