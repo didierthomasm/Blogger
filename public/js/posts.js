@@ -82,3 +82,63 @@ const updatePost = async function (event) {
 document
   .querySelectorAll('.update-comment')
   .forEach(button => button.addEventListener('click', updatePost));
+
+document.querySelectorAll('.update-post-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const post = btn.closest('.post');
+    post.querySelector('.display-state').style.display = 'none';
+    post.querySelector('.edit-state').style.display = 'block';
+  });
+});
+
+document.querySelectorAll('.cancel-post-btn').forEach(btn => {
+  btn.addEventListener('click', function() {
+    const post = btn.closest('.post');
+    post.querySelector('.display-state').style.display = 'block';
+    post.querySelector('.edit-state').style.display = 'none';
+  });
+});
+
+document.querySelectorAll('.save-post-btn').forEach(btn => {
+  btn.addEventListener('click', async function() {
+    const postSection = btn.closest('.post');
+    const postId = postSection.getAttribute('data-id');
+
+    const postTitle = postSection.querySelector('.post-title-edit').value.trim();
+    const postDescription = postSection.querySelector('.post-description-edit').value.trim();
+    const postContent = postSection.querySelector('.post-content-edit').value.trim();
+
+
+
+
+    try {
+      const response = await fetch(`/api/posts/${postId}/`, {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          content: postContent,
+          title: postTitle,
+          description: postDescription
+        })
+      });
+
+      if (response.ok) {
+        // Update the displayed content and toggle views
+        postSection.querySelector('.post-title').textContent = postTitle;
+        postSection.querySelector('.post-description').textContent = postDescription;
+        postSection.querySelector('.post-content').textContent = postContent;
+
+        postSection.querySelector('.display-state').style.display = 'block';
+        postSection.querySelector('.edit-state').style.display = 'none';
+        alert('Post updated successfully');
+      } else {
+        alert('Error updating post');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+      alert('Error updating post');
+    }
+  });
+});
