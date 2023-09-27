@@ -10,7 +10,7 @@ module.exports = {
   },
   isOwner: async (id) => {
     const owner = id;
-    const loggedIn = await fetch('/api/users/user-logged' , {
+    const loggedIn = await fetch('/api/users/user-logged', {
       method: 'GET'
     });
     return owner === loggedIn;
@@ -20,5 +20,12 @@ module.exports = {
       return options.fn({id: commentId});
     }
     return options.inverse(this);
+  },
+  if_less_than: function (index, compare, options)  {
+    if (index < compare) {
+      return options.fn(this);
+    } else {
+      return options.inverse(this);
+    }
   },
 }

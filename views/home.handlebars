@@ -1,12 +1,14 @@
 <section>
     <h2>Latest Posts</h2>
     {{#if posts}}
-        {{#each posts as |post|}}
-            <article>
-                <h3>{{post.title}}</h3>
-                <p>{{dateFormat post.createdAt}}</p>
-                <a href="/post/{{post.id}}">Read More</a>
-            </article>
+        {{#each posts}}
+            {{#if_less_than @index 8}}
+                <article>
+                    <h3>{{this.title}}</h3>
+                    <p>{{dateFormat this.createdAt}}</p>
+                    <a href="/post/{{this.id}}">Read More</a>
+                </article>
+            {{/if_less_than}}
         {{/each}}
     {{/if}}
 </section>
