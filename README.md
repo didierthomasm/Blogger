@@ -1,6 +1,6 @@
 # **BlogVerse** 🚀
 
-![BlogVerse Logo](https://path-to-logo-or-image.png)
+![BlogVerse Logo](./assets/img/logo.png)
 
 **BlogVerse** is a modern blogging platform empowering users to share, engage, and connect.
 With a strong emphasis on security, sleek UI, and responsive design, we bring stories to life.
