@@ -1,4 +1,4 @@
-/* Reset some default browser styles */
+/* Base styles and browser reset */
 * {
     margin: 0;
     padding: 0;
@@ -127,6 +127,8 @@ button:hover {
     border-radius: 5px;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
 }
+
+
 
 textarea {
     min-height: 150px;
